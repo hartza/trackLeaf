@@ -1,0 +1,21 @@
+<package>
+  <description brief="TrackLeaf">
+
+     trackLeaf
+
+  </description>
+  <author>galenya</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://</url>
+  <depend package="roscpp"/>
+  <depend package="visualization_msgs"/>
+  <depend package="pcl"/>
+  <depend package="sensor_msgs"/>  
+  <depend package="image_transport"/>
+  <depend package="tf"/>
+  <depend package="camera_info_manager"/>
+  <depend package="bfl"/>
+</package>
+
+
