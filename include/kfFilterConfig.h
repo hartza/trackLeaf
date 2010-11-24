@@ -16,10 +16,10 @@
   
   // **** System noise covariance
   
-  const double SIGMA_SYSTEM_NOISE_A     = 0.1;
-  const double SIGMA_SYSTEM_NOISE_B     = 0.1;
-  const double SIGMA_SYSTEM_NOISE_C     = 0.1;
-  const double SIGMA_SYSTEM_NOISE_D     = 0.1;
+  const double SIGMA_SYSTEM_NOISE_A     = 0.001;
+  const double SIGMA_SYSTEM_NOISE_B     = 0.001;
+  const double SIGMA_SYSTEM_NOISE_C     = 0.001;
+  const double SIGMA_SYSTEM_NOISE_D     = 0.001;
   
   // **** Measurement noise median
   

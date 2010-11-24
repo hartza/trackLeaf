@@ -5,7 +5,7 @@
 //#include <sensor_msgs/PointCloud2.h>
 #include "pcl/ModelCoefficients.h"
 #include <visualization_msgs/Marker.h>
-
+#include <tf/transform_broadcaster.h>
 //CAMCUBE
 
 //#include "camcube.h"
@@ -49,7 +49,7 @@ static const int PMD_INTEGRATION_TIME = 600; ///600 by default (close objects)
 */
 class trackLeaf {
   public:
-    trackLeaf();
+    trackLeaf(ros::NodeHandle n);
     ~trackLeaf();
     
     /**
@@ -72,7 +72,7 @@ class trackLeaf {
     /**
     * Receives the Point clouds and images, processes and publish
     */
-    void trackLeafCallback(const sensor_msgs::PointCloud2::ConstPtr& msg);
+    void trackLeafCallback(const sensor_msgs::PointCloud2& msg);
   private:
     int integration_time_;
     bool calibration_on_;
@@ -80,11 +80,30 @@ class trackLeaf {
     //to handle camcuble
     //pmd_camcube::PmdCamcube * pmdCC_; 
     
+    sensor_msgs::PointCloud2 cloud2_, cloud2_p_;
+    sensor_msgs::PointCloud cloud_;
+    pcl::PointCloud<pcl::PointXYZ> cloudXYZ_, cloudXYZ_filtered_, cloudXYZ_p_;
+    
     //filter Region
     pcl::PassThrough<pcl::PointXYZ> pass_;
     pcl::PassThrough<pcl::PointXYZ> pass2_;
     
     PoseEstimationFilter * poseFilter_;
+
+    ros::Publisher pub_, pub2_, pub3_, pub4_;
+// filters
+  pcl::ModelCoefficients coefficients_;
+  pcl::PointIndices inliers_;
+  
+  pcl::SACSegmentation<pcl::PointXYZ> seg_;
+
+        // Create the filtering object
+  pcl::ExtractIndices<pcl::PointXYZ> extract_;
+  
+  tf::Transform transform_,transformFilter_;
+  
+
+
 
 };
 
