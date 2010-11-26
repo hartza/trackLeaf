@@ -74,9 +74,23 @@ class trackLeaf {
     */
     void trackLeafCallback(const sensor_msgs::PointCloud2& msg);
   private:
+    /**
+    * init the tracker by finding the initial plane coeficients
+    * uses a small patch in the center of the image to determine the target
+    * @todo use a point to determine the initial pose
+    */
+    void initTracker();
+    
+    /**
+    * Helper function for the observation
+    * prune all points out of the container box
+    */
+    void segmentNeighbors(const pcl::PointCloud<pcl::PointXYZ>& input_cloudXYZ_, pcl::PointCloud<pcl::PointXYZ>& output_cloudXYZ_);
+    
     int integration_time_;
     bool calibration_on_;
     bool initialised_; ///if the camera has been initialised should be cleanly closed
+    bool firstLoop_; ///to control the initialization of the filter
     //to handle camcuble
     //pmd_camcube::PmdCamcube * pmdCC_; 
     
@@ -85,8 +99,10 @@ class trackLeaf {
     pcl::PointCloud<pcl::PointXYZ> cloudXYZ_, cloudXYZ_filtered_, cloudXYZ_p_;
     
     //filter Region
+    //Això és eficient? no es pot fer un filtre amb les tres condicions i no fer 3 passades diferents?
     pcl::PassThrough<pcl::PointXYZ> pass_;
     pcl::PassThrough<pcl::PointXYZ> pass2_;
+    pcl::PassThrough<pcl::PointXYZ> pass3_;
     
     PoseEstimationFilter * poseFilter_;
 
@@ -102,9 +118,12 @@ class trackLeaf {
   
   tf::Transform transform_,transformFilter_;
   
-
-
-
+  Eigen3::Vector3f box_size_; ///stores the size of the container box used to segment points with the plane coeficients
+  Eigen3::Vector3f box_center_;///the center point of the container box
+  Eigen3::Vector3f box_change_;///delta to add to the new boxed search space
+  static const float MAX_X_BOX_SIZE=0.05;
+  static const float MAX_Y_BOX_SIZE=0.05;
+  static const float MAX_Z_BOX_SIZE=0.02;
 };
 
 #endif

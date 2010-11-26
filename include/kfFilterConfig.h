@@ -12,14 +12,14 @@
   const double MU_SYSTEM_NOISE_A     = 0.0;
   const double MU_SYSTEM_NOISE_B     = 0.0;
   const double MU_SYSTEM_NOISE_C     = 0.0;
-  const double MU_SYSTEM_NOISE_D  = 0.0;
+  const double MU_SYSTEM_NOISE_D     = 0.0;
   
   // **** System noise covariance
   
-  const double SIGMA_SYSTEM_NOISE_A     = 0.001;
-  const double SIGMA_SYSTEM_NOISE_B     = 0.001;
-  const double SIGMA_SYSTEM_NOISE_C     = 0.001;
-  const double SIGMA_SYSTEM_NOISE_D     = 0.001;
+  const double SIGMA_SYSTEM_NOISE_A     = 0.01;
+  const double SIGMA_SYSTEM_NOISE_B     = 0.01;
+  const double SIGMA_SYSTEM_NOISE_C     = 0.01;
+  const double SIGMA_SYSTEM_NOISE_D     = 0.01;
   
   // **** Measurement noise median
   
@@ -40,14 +40,14 @@
   const double MU_PRIOR_A     = 0.0;
   const double MU_PRIOR_C     = 0.0;
   const double MU_PRIOR_B     = 0.0;
-  const double MU_PRIOR_D  = 0.0;
+  const double MU_PRIOR_D     = 0.0;
   
   // **** Prior covariance
   
   const double SIGMA_PRIOR_A     = 100.0;
   const double SIGMA_PRIOR_B     = 100.0;
   const double SIGMA_PRIOR_C     = 100.0;
-  const double SIGMA_PRIOR_D  = 100.0;
+  const double SIGMA_PRIOR_D     = 100.0;
   
 #endif
   
