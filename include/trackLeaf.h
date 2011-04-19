@@ -28,11 +28,11 @@
 
 
 //operacions amb matrius
-#include <Eigen3/Core>
-#include <Eigen3/Geometry>
+#include <Eigen/Core>
+#include <Eigen/Geometry>
 //#include <Eigen3/Array>
 // import most common Eigen types 
-using namespace Eigen3;
+using namespace Eigen;
 
 //    using namespace MatrixWrapper;
 //   using namespace BFL;
@@ -120,9 +120,9 @@ private:
   
   tf::Transform transform_, transformFilter_;
 
-  Eigen3::Vector3f box_size_; ///stores the size of the container box used to segment points with the plane coeficients
-  Eigen3::Vector3f box_center_;       ///the center point of the container box
-  Eigen3::Vector3f box_change_;       ///delta to add to the new boxed search space
+  Eigen::Vector3f box_size_; ///stores the size of the container box used to segment points with the plane coeficients
+  Eigen::Vector3f box_center_;       ///the center point of the container box
+  Eigen::Vector3f box_change_;       ///delta to add to the new boxed search space
   static const float MAX_X_BOX_SIZE = 0.05;
   static const float MAX_Y_BOX_SIZE = 0.05;
   static const float MAX_Z_BOX_SIZE = 0.02;

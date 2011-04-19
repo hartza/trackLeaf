@@ -327,7 +327,7 @@ main (int argc, char **argv)
 
   trackLeaf *tracker_ = new trackLeaf (n);
 
-  ros::Subscriber sub = n.subscribe ("/trackLeaf/input/pointCloud2", 2, &trackLeaf::trackLeafCallback, tracker_);
+  ros::Subscriber sub = n.subscribe ("input", 2, &trackLeaf::trackLeafCallback, tracker_);
 
   ros::spin ();
   
