@@ -1,0 +1,17 @@
+<launch>
+  <node name="camcube_camera" pkg="pmdcamera_node" type="pmdcamera_node">
+       <param name="camera_type" value="1" />
+  </node>
+  <node pkg="dynamic_reconfigure" type="reconfigure_gui"
+        name="reconfigure_gui" />
+
+  <remap from="/input" to="camcube_camera/pointcloud/cloud2_raw" />
+  <node pkg="trackLeaf" name="trackLeaf" type="trackLeaf"> 
+<remap from="/trackLeaf/input" to="camcube_camera/pointcloud/cloud2_raw" />  
+</node>
+<!--  <node pkg="pcl_tutorials" type="pointcloud_online_viewer"
+        name="pointcloud_online_viewer" >
+       <param name="input" value="/pointcloud/cloud2_raw" />
+  </node>
+-->
+</launch>
